@@ -1,7 +1,7 @@
 {
-  "name": "boiler_plate",
-  "version": "1.0.0",
-  "description": "boiler plating",
+  "name": "NFT_POC",
+  "version": "0.0.1",
+  "description": "POC of our NFT Project",
   "main": "",
   "scripts": {
     "client::build": "webpack",
@@ -22,6 +22,7 @@
   },
   "homepage": "",
   "dependencies": {
+    "etherfunnel": "0.0.2",
     "express": "^4.17.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
