@@ -2,6 +2,7 @@ import Web3 from 'web3';
 import {AbiItem} from 'web3-utils';
 import {Contract} from 'web3-eth-contract';
 
+// TODO meta.address and Marmal json file should always be updated when running a new ganache server
 import meta from './meta.json';
 import token from './Marmal.json';
 import logger from '../util/logger';
@@ -47,9 +48,11 @@ class Engine {
         // init account
         const accounts = await this.web3.eth.getAccounts();
         this.account = accounts[0];
+        logger.info(`connected to account: ${this.account}`);
 
         // init contract
         this.contract = new this.web3.eth.Contract(token.abi as AbiItem[], meta.address);
+        logger.info(`connected to contract: ${meta.address}`);
     }
 }
 
