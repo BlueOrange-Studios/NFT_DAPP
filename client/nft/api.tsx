@@ -1,11 +1,17 @@
 import Web3 from 'web3';
+import {AbiItem} from 'web3-utils';
+import {Contract} from 'web3-eth-contract';
 
+import meta from './meta.json';
+import token from './Marmal.json';
 import logger from '../util/logger';
 
 declare let window: any;
 
 class Engine {
     web3: Web3;
+    account: String;
+    contract: Contract;
 
     constructor() {
         // 1. Initializing this.web3
@@ -38,8 +44,12 @@ class Engine {
     async connect() {
         logger.info("connecting to block-chain");
 
+        // init account
         const accounts = await this.web3.eth.getAccounts();
-        // TODO initialize accounts
+        this.account = accounts[0];
+
+        // init contract
+        this.contract = new this.web3.eth.Contract(token.abi as AbiItem[], meta.address);
     }
 }
 
